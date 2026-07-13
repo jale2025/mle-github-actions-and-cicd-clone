@@ -21,7 +21,12 @@ jobs:
         with:
           python-version: "3.11.3"
 
-      - uses: iterative/setup-cml@v2.0.1
+      - name: Install CML system dependencies (Cairo/Pixman)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+
+      - uses: iterative/setup-cml@v3
 
       - name: Install dependencies
         run: |
